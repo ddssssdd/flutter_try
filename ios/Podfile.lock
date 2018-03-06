@@ -1,0 +1,37 @@
+PODS:
+  - barcode_scan (0.0.1):
+    - Flutter
+    - MTBBarcodeScanner
+  - Flutter (1.0.0)
+  - MTBBarcodeScanner (5.0.3)
+  - shared_preferences (0.0.1):
+    - Flutter
+  - url_launcher (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - barcode_scan (from `Pods/.symlinks/plugins/barcode_scan-0.0.3/ios`)
+  - Flutter (from `Pods/.symlinks/flutter/ios`)
+  - shared_preferences (from `Pods/.symlinks/plugins/shared_preferences-0.3.3/ios`)
+  - url_launcher (from `Pods/.symlinks/plugins/url_launcher-2.0.1/ios`)
+
+EXTERNAL SOURCES:
+  barcode_scan:
+    :path: Pods/.symlinks/plugins/barcode_scan-0.0.3/ios
+  Flutter:
+    :path: Pods/.symlinks/flutter/ios
+  shared_preferences:
+    :path: Pods/.symlinks/plugins/shared_preferences-0.3.3/ios
+  url_launcher:
+    :path: Pods/.symlinks/plugins/url_launcher-2.0.1/ios
+
+SPEC CHECKSUMS:
+  barcode_scan: 8288e70cb430072003bce2c794a1431e7adbcb4d
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  MTBBarcodeScanner: 3ce0f1b0085ef00c726ded663c490a63b29c9aa5
+  shared_preferences: 5a1d487c427ee18fcd3ea1f2a131569481834b53
+  url_launcher: 92b89c1029a0373879933c21642958c874539095
+
+PODFILE CHECKSUM: d76c19a85fb9cbf1e6bc37388fe47d013b210144
+
+COCOAPODS: 1.4.0

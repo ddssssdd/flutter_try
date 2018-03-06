@@ -1,0 +1,42 @@
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap-env:Header>
+        <n0:CallerInformation xmlns:n0="http://www.sap.com/webas/712/soap/features/runtime/metering/">
+            <m:Type xmlns:m="http://www.sap.com/webas/712/soap/features/runtime/metering/">SA</m:Type>
+            <m:Company xmlns:m="http://www.sap.com/webas/712/soap/features/runtime/metering/">0020824418</m:Company>
+            <m:Sys xmlns:m="http://www.sap.com/webas/712/soap/features/runtime/metering/">ECP_800</m:Sys>
+        </n0:CallerInformation>
+    </soap-env:Header>
+    <soap-env:Body>
+        <n1:putBullMRPData xmlns:n1="http://data.ws.datahub/"
+                           xmlns:prx="urn:sap.com:proxy:ECP:/1SAI/TAS0C978AEFA6A9E1F859CA:740">
+            <wmsSecurityInfo>
+                <password>bull</password>
+                <username>bull</username>
+            </wmsSecurityInfo>
+            <bullmrpInfo>
+                <wmsBullMRPHeader>
+                    <MRPNO>003000336085</MRPNO>
+                    <WORKCENTER>ZS03</WORKCENTER>
+                    <USERDEFINE1>2200</USERDEFINE1>
+                    <EXPECTEDSENDTIME1>20180305</EXPECTEDSENDTIME1>
+                    <PRODNO>000000000030002266</PRODNO>
+                    <PRODNAME>G06GK111一位单极开关功能件过渡件</PRODNAME>
+                    <QTY>160000.000</QTY>
+                    <MRPTYPE>ZPP3</MRPTYPE>
+                    <USERDEFINE3>PCS</USERDEFINE3>
+                    <USERDEFINE5>201</USERDEFINE5>
+                    <USERDEFINE7>墙开注塑三车间</USERDEFINE7>
+                    <USERDEFINE8>6301</USERDEFINE8>
+                    <USERDEFINE9>注塑三车间</USERDEFINE9>
+                    <USERDEFINE12>2001</USERDEFINE12>
+                </wmsBullMRPHeader>
+            </bullmrpInfo>
+            <wmsParam>
+                <customerid>BULLWMS</customerid>
+                <messageid>BULL_MRP</messageid>
+                <stdno>BULL_MRP</stdno>
+                <warehouseid>BULLDB</warehouseid>
+            </wmsParam>
+        </n1:putBullMRPData>
+    </soap-env:Body>
+</soap-env:Envelope>
