@@ -12,6 +12,10 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/barcode_scan-0.0.3/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/barcode_scan-0.0.3/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/barcode_scan-0.0.3/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/shared_preferences-0.3.3/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/shared_preferences-0.3.3/build" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/shared_preferences-0.3.3/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/shared_preferences-0.3.3/example/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/url_launcher-2.0.1/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/url_launcher-2.0.1/build" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/url_launcher-2.0.1/example/.pub" />

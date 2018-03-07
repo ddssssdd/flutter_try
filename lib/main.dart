@@ -128,21 +128,26 @@ class _StateImagesHome extends State<ImagesHome>{
   List<SearchItem> _searchItems = new List<SearchItem>();
   String _search;
   int _offset =0;
+  bool isSearchingWeb = false;
+  final int _count = 50;
   List<ImageItem> _items = new List<ImageItem>();
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
   void _doSearch() async {
+    _items.clear();
     _formKey.currentState.save();
     _doSearchWithKey(_search);
   }
   void _doSearchWithKey(String key) async{
     setState((){ _inSearch = false;});
-
-    var url = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=$key&count=150&offset=$_offset';
+    if (isSearchingWeb)
+      return;
+    isSearchingWeb = true;
+    var url = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=$key&count=$_count&offset=$_offset';
     var httpClient = new HttpClient();
     try{
 
-      print("begin fetch data[$key]...");
+      print("begin fetch data[$key]...[$url]");
       var request = await httpClient.getUrl(Uri.parse(url));
       request.headers.add("Ocp-Apim-Subscription-Key", "38b88a5cdf4947a2b591fa091fa6a330");
       var response = await request.close();
@@ -150,7 +155,7 @@ class _StateImagesHome extends State<ImagesHome>{
         var result = await response.transform(UTF8.decoder).join();
         Map json = JSON.decode(result);
         //print(json);
-        _items.clear();
+
         if (json["value"]!=null){
           for(var item in json["value"]){
             _items.add(new ImageItem(item));
@@ -158,17 +163,34 @@ class _StateImagesHome extends State<ImagesHome>{
           }
           addSearchKey(key);
         }
-        setState((){ _inSearch = false;});
+        setState((){
+          _inSearch = false;
+          _search = key;
+        });
         print("end fetch data[$key].");
       } else {
         print('Error auth:Http status ${response.statusCode}');
       }
-
+      isSearchingWeb = false;
     }catch(exception){
       print(exception);
+      isSearchingWeb = false;
     }
   }
   Widget _buildBody(){
+    return new ListView.builder(
+        itemCount: _items.length,
+        itemBuilder: (context,index){
+          final ImageItem imageItem = _items[index];
+          if (index>20 && _items.length-11==index && !isSearchingWeb){
+            print("index=$index, start research $_search...");
+            _offset = _offset + _count;
+            _doSearchWithKey(_search);
+          }
+          return new GridDemoPhotoItem(photo: imageItem,);
+    });
+  }
+  Widget _buildBody2(){
     final Orientation orientation = MediaQuery.of(context).orientation;
     return new Column(
       children: <Widget>[
@@ -226,6 +248,7 @@ class _StateImagesHome extends State<ImagesHome>{
         leading: new Text(item.count.toString()),
         title: new Text(item.key),
         onTap: (){
+          _items.clear();
           _doSearchWithKey(item.key);
         },
         onLongPress: (){
@@ -285,7 +308,8 @@ class _StateImagesHome extends State<ImagesHome>{
     if (searchHist!=null){
       var json = JSON.decode(searchHist);
       for(var item in json){
-        _searchItems.add(new SearchItem.fromJson(item));
+        if (item['key']!=null && item['count']!=null)
+          _searchItems.add(new SearchItem.fromJson(item));
       }
     }
     setState((){
